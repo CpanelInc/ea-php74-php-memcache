@@ -19,6 +19,7 @@ Source1: memcache.ini
 #Requires: memcached
 #BuildRequires: libyaml-devel
 BuildRequires: %{scl_version} %{scl_version}-php-cli
+BuildRequires: autotools-latest-autoconf
 
 %description
 Memcached is a caching daemon designed especially for  dynamic web applications
@@ -30,6 +31,11 @@ you to work with memcached through handy OO and procedural interfaces.
 %setup -n pecl-memcache-NON_BLOCKING_IO_php7
 
 %build
+
+%if 0%{rhel} < 7
+export PHP_AUTOCONF=/usr/bin/autoconf
+%endif
+
 scl enable %{scl_version} phpize
 scl enable %{scl_version} ./configure
 make
