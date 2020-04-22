@@ -7,7 +7,7 @@ Name: %{scl_version}-php-memcache
 Version: 4.0.3
 Summary: memcache extension for %{scl_version}
 # Doing release_prefix this way for Release allows for OBS-proof versioning, See EA-4576 for more details
-%define release_prefix 4
+%define release_prefix 5
 Release: %{release_prefix}%{?dist}.cpanel
 License: MIT
 Group: Programming/Languages
@@ -20,7 +20,8 @@ Source1: memcache.ini
 #BuildRequires: libyaml-devel
 BuildRequires: %{scl_version} %{scl_version}-php-cli
 BuildRequires: autotools-latest-autoconf
-Requires: %{scl_version} %{scl_version}-php-cli
+Requires: %{scl_version}-php-common
+Requires: %{scl_version}-php-cli
 
 %description
 Memcached is a caching daemon designed especially for  dynamic web applications
@@ -55,6 +56,9 @@ install -m 644 %{SOURCE1} %{buildroot}/%{ext_prefix}/%{conf_dir}/
 %config /%{ext_prefix}/%{conf_dir}/memcache.ini
 
 %changelog
+* Mon Apr 20 2020 Daniel Muey <dan@cpanel.net> - 4.0.3-5
+- ZC-6608: Fix Requires for PHP
+
 * Mon Apr 13 2020 Cory McIntire <cory@cpanel.net> - 4.0.3-4
 - EA-8978: Add php as a dependency
 
