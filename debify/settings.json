@@ -1,0 +1,15 @@
+{
+    "add_to_build_requires": [
+        "zlib1g",
+        "zlib1g-dev",
+        "libedit2",
+        "libargon2-1",
+        "libargon2-dev",
+        "ea-php74-php-cli",
+        "ea-php74-php-common",
+        "ea-php74-php-devel"
+    ],
+    "remove_from_requires": [
+        "autotools-latest-autoconf"
+    ]
+}
